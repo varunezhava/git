@@ -1,4 +1,4 @@
-package SEL_BIE.SELBIETEST;
+package SELBIETEST.SELBIETEST;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
