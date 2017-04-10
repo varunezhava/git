@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
 
   <name>SELBIETEST</name>
-  <url>https://github.com/varunezhava/git/tree/master/SELBIETEST/mvn-repo</url>
+  <url>https://github.com/varunezhava/git/</url>
   
   
 
@@ -16,6 +16,15 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <github.global.server>github</github.global.server>
   </properties>
+  
+  <repositories>
+        <repository>
+            <id>SELBIETEST</id>
+            <name>mvn-repo</name>
+            <layout>default</layout>
+            <url>https://github.com/varunezhava/git/SELBIETEST/</url>
+        </repository>
+    </repositories>
 
   <dependencies>
     <dependency>
