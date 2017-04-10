@@ -17,10 +17,12 @@
     <github.global.server>github</github.global.server>
   </properties>
   
+  
+  
   <repositories>
         <repository>
             <id>SELBIETEST</id>
-            <name>mvn-repo</name>
+            <name>SELBIETEST</name>
             <layout>default</layout>
             <url>https://github.com/varunezhava/git/SELBIETEST/</url>
         </repository>
