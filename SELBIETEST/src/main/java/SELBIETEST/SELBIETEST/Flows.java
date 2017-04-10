@@ -26,7 +26,7 @@ public class Flows extends Operations{
 	
 	 public String initialize(XSSFRow activerow) throws IOException{
 		 Operations accesor = new Flows();
-		pro=((Flows)accesor).loadrepository("C:\\Users\\Varun\\workspace\\Selenium BIE\\Obj_repo.properties");
+		pro=((Flows)accesor).loadrepository("C:\\Users\\varun.ezhava\\git\\git\\SELBIETEST\\Obj_repo.properties");
 		System.out.println("Repositories loaded");
 		return activerow.getCell(activerow.getLastCellNum()-1).toString();
 	 }

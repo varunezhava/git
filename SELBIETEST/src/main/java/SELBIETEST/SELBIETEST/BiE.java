@@ -39,11 +39,11 @@ public class BiE extends Flows{
 	{
 		 
 		//Flows accesor = new BiE();
-		Class<?> flowclass = Class.forName("Flows");
+		Class<?> flowclass = Class.forName("SELBIETEST.SELBIETEST.Flows");
 		 Object obj = flowclass.newInstance();
 		 String funname = null;
-		 XSSFWorkbook workbook = new XSSFWorkbook("C:\\Users\\Varun\\workspace\\Selenium BIE\\MasterDataSheet.xlsx");
-		 XSSFWorkbook workbookinput = new XSSFWorkbook("C:\\Users\\Varun\\workspace\\Selenium BIE\\InputSheet.xlsx");
+		 XSSFWorkbook workbook = new XSSFWorkbook("C:\\Users\\varun.ezhava\\git\\git\\SELBIETEST\\MasterDataSheet.xlsx");
+		 XSSFWorkbook workbookinput = new XSSFWorkbook("C:\\Users\\varun.ezhava\\git\\git\\SELBIETEST\\InputSheet.xlsx");
 		 XSSFSheet inputsheet = workbookinput.getSheetAt(0);
 		 XSSFSheet sheet;
 		 int totalrun = inputsheet.getLastRowNum();

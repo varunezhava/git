@@ -33,7 +33,7 @@ import org.openqa.selenium.support.ui.Select;
 		 File src=new File(Filename);
 			FileInputStream fis=new FileInputStream(src);
 			pro.load(fis);
-			System.setProperty("webdriver.ie.driver", "E:\\Work\\Selenium\\IEDriverServer.exe");
+			System.setProperty("webdriver.ie.driver", "C:\\Users\\varun.ezhava\\Downloads\\IEDriverServer_Win32_3.3.0\\IEDriverServer.exe");
 			IEDriver = new InternetExplorerDriver();
 			  IEDriver.manage().window().maximize();
 						
