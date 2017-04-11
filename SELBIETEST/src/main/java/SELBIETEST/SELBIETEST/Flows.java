@@ -358,6 +358,22 @@ public class Flows extends Operations{
 			 String nextfun = activerow.getCell(activerow.getLastCellNum()-1).toString();
 	         return nextfun; 
 	 }
+	 
+	 public String buisnessinfo(XSSFRow activerow){
+		 Operations accesor = new Flows();
+		 int maxpara = activerow.getLastCellNum() - 3;
+			// Iterator<Cell> datarow = activerow.cellIterator();
+			 ArrayList<String> data = new ArrayList<String>();
+			 ((Flows)accesor).WaitForJS();
+			 for( int j = 2; j<= maxpara+1; j++){
+				 
+				  data.add(new BigDecimal(activerow.getCell(j).toString()).stripTrailingZeros().toPlainString());
+									 
+			 }
+			 
+			 chk=((Flows)accesor).waitcomplete()
+		 
+	 }
 	
 }
 
