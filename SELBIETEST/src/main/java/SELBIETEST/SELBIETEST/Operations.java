@@ -3,10 +3,10 @@ package SELBIETEST.SELBIETEST;
 
 
 
-import java.io.File;
 import java.io.FileInputStream;
 //import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Iterator;
 
 import java.util.List;
@@ -28,16 +28,19 @@ import org.openqa.selenium.support.ui.Select;
 	 public static String winHandleBefore;
 	 public static String winHandle;
 
-	public Properties loadrepository(String Filename ) throws IOException{
+	public Properties loadrepository() throws IOException{
+		
 		 
-		 File src=new File(Filename);
-			FileInputStream fis=new FileInputStream(src);
-			pro.load(fis);
-			System.setProperty("webdriver.ie.driver", "C:\\Users\\varun.ezhava\\Downloads\\IEDriverServer_Win32_3.3.0\\IEDriverServer.exe");
+		InputStream input = new FileInputStream("Obj_repo.properties");
+		pro.load(input);
+			 
+	
+		 
+		 
+		 	System.setProperty("webdriver.ie.driver",System.getProperty("user.dir") +"\\IEDriverServer.exe");
 			IEDriver = new InternetExplorerDriver();
 			  IEDriver.manage().window().maximize();
-						
-			return pro;
+									return pro;
 	 }
 
 	public int Login(String url, String usrnameloc,  String usrnm, String passwdloc,  String passwd)

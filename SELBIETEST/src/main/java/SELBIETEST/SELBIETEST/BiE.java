@@ -2,6 +2,10 @@ package SELBIETEST.SELBIETEST;
 
 
 
+
+
+import java.io.File;
+
 //import java.util.concurrent.TimeUnit;
 
 //import java.io.File;
@@ -13,6 +17,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 //import java.util.List;
 //import java.util.Properties;
+
+import javax.swing.JFileChooser;
 
 
 //import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -37,13 +43,38 @@ public class BiE extends Flows{
 		
 	public static void main(String[] args) throws InterruptedException, IOException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, ClassNotFoundException, InstantiationException, ReflectiveOperationException
 	{
-		 
-		//Flows accesor = new BiE();
 		Class<?> flowclass = Class.forName("SELBIETEST.SELBIETEST.Flows");
 		 Object obj = flowclass.newInstance();
 		 String funname = null;
-		 XSSFWorkbook workbook = new XSSFWorkbook("C:\\Users\\varun.ezhava\\git\\git\\SELBIETEST\\MasterDataSheet.xlsx");
-		 XSSFWorkbook workbookinput = new XSSFWorkbook("C:\\Users\\varun.ezhava\\git\\git\\SELBIETEST\\InputSheet.xlsx");
+		JFileChooser fileChooser = new JFileChooser();
+		
+		fileChooser.setDialogTitle("Select the Master Data Input Sheet");
+		fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
+		 File selectedFilemaster = null;
+		int result = fileChooser.showOpenDialog(fileChooser);
+		if (result == JFileChooser.APPROVE_OPTION) {
+		     selectedFilemaster = fileChooser.getSelectedFile();
+		   // System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+		}
+		
+		JFileChooser fileChooser1 = new JFileChooser();
+		fileChooser1.setDialogTitle("Select the Input Sheet");
+		fileChooser1.setCurrentDirectory(new File(System.getProperty("user.dir")));
+		File selectedFileinout = null;
+		int result1 = fileChooser1.showOpenDialog(fileChooser1);
+		if (result1 == JFileChooser.APPROVE_OPTION) {
+		     selectedFileinout = fileChooser1.getSelectedFile();
+		   // System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+		}
+		 
+		
+		
+		
+		
+		//Flows accesor = new BiE();
+		
+		 XSSFWorkbook workbook = new XSSFWorkbook(selectedFilemaster.getAbsolutePath());
+		 XSSFWorkbook workbookinput = new XSSFWorkbook(selectedFileinout.getAbsolutePath());
 		 XSSFSheet inputsheet = workbookinput.getSheetAt(0);
 		 XSSFSheet sheet;
 		 int totalrun = inputsheet.getLastRowNum();
