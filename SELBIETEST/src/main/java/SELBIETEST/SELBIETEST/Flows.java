@@ -190,7 +190,7 @@ public class Flows extends Operations{
 		 int maxpara = activerow.getLastCellNum() - 3;
 			// Iterator<Cell> datarow = activerow.cellIterator();
 			 ArrayList<String> data = new ArrayList<String>();
-			 ((Flows)accesor).WaitForJS();
+			// ((Flows)accesor).WaitForJS();
 		 int chk =0;
 			 chk=((Flows)accesor).waitcomplete("bie.businessname");
 			 
@@ -461,7 +461,7 @@ public class Flows extends Operations{
 			 
 			chk=0;
 			 if(data.get(7).length() != 0){
-				 chk=((Flows)accesor).autopopulator("bie.seconinsuredlastname", data.get(7));
+				 chk=((Flows)accesor).autopopulator("bie.seconinsuredfirstname", data.get(7));
 				 
 			 }
 			 
@@ -573,7 +573,7 @@ public class Flows extends Operations{
 		         else{
 		       	System.out.println("Household number not entered");
 		         }
-			 
+			 ((Flows)accesor).WaitForJS();
 			 chk=0;
 			 if(data.get(16).length() != 0){
 				 chk=((Flows)accesor).autopopulator("bie.fein", data.get(16));
@@ -584,7 +584,7 @@ public class Flows extends Operations{
 		         else{
 		       	System.out.println("FEIN not entered");
 		         }
-			 
+			 ((Flows)accesor).WaitForJS();
 			 chk=0;
 			 if(data.get(17).length() != 0){
 				 chk=((Flows)accesor).autopopulator("bie.websiteaddress", data.get(17));
@@ -595,6 +595,7 @@ public class Flows extends Operations{
 		         else{
 		       	System.out.println("Website not entered");
 		         }
+			 ((Flows)accesor).WaitForJS();
 			 chk=0;
 			 
 			 chk=((Flows)accesor).dropdownbyval("bie.typeofquotedropdown", data.get(18));
@@ -620,7 +621,7 @@ public class Flows extends Operations{
 		         else{
 		       	System.out.println("Established year not entered");
 		         }
-	 
+			 ((Flows)accesor).WaitForJS();
 			 chk=0;
 			 if(data.get(21).length() != 0){
 				 chk=((Flows)accesor).dropdownbyval("bie.maintaincontinsurance", data.get(21));
@@ -635,15 +636,16 @@ public class Flows extends Operations{
 		         }
 			 
 			 
+			 chk=((Flows)accesor).waitcomplete("bie.yearsofmanagementexp");
 			 
-			 chk=((Flows)accesor).autopopulator("bie.yearsofmanagementexp", data.get(22));
+			 chk=((Flows)accesor).autopopulator("bie.yearsofmanagementexp", new BigDecimal (data.get(22)).stripTrailingZeros().toPlainString());
 			 if(chk == 1) {
 		           	System.out.println("Experience entered");
 		          }      
 		         else{
 		       	System.out.println("Experience not entered");
 		         }
-			 
+			 ((Flows)accesor).WaitForJS();
 			 chk=0;
 			 chk=((Flows)accesor).dropdownbyval("bie.anypoliciesinsuredwithfarmersdropdown", data.get(23));
 			 
@@ -653,6 +655,7 @@ public class Flows extends Operations{
 		         else{
 		       	System.out.println("insurance with farmers  not entered");
 		         }
+			 ((Flows)accesor).WaitForJS();
 			 chk=0;
 			 if(data.get(24).length() != 0){
 				 chk=((Flows)accesor).clickbutton("bie.commercialcheckbox"); 
@@ -677,15 +680,15 @@ public class Flows extends Operations{
 		         }
 			 
 			 
-			 chk=0;
-			 chk=((Flows)accesor).dropdownbyval("bie.anypoliciesinsuredwithfarmersdropdown", data.get(26));
+			// chk=0;
+			// chk=((Flows)accesor).dropdownbyval("bie.anypoliciesinsuredwithfarmersdropdown", data.get(26));
 			 
-			 if(chk == 1) {
-		           	System.out.println("Any policies with farmers entered");
-		          }      
-		         else{
-		       	System.out.println("Any policies with farmers not entered");
-		         }
+		//	 if(chk == 1) {
+		  //         	System.out.println("Any policies with farmers entered");
+		 //         }      
+		//         else{
+		//       	System.out.println("Any policies with farmers not entered");
+		//         }
 			 
 			 chk=0;
 			 chk=((Flows)accesor).dropdownbyval("bie.anyotherbusinessnotinsureddropdown", data.get(26));
@@ -699,7 +702,7 @@ public class Flows extends Operations{
 			 
 			 chk=0;
 			
-			 chk=((Flows)accesor).autopopulator("bie.additionalinterests", data.get(27));
+			 chk=((Flows)accesor).autopopulator("bie.additionalinterests", new BigDecimal (data.get(27)).stripTrailingZeros().toPlainString());
 			 
 			 if(chk == 1) {
 		           	System.out.println("Additional interest entered");
@@ -709,7 +712,7 @@ public class Flows extends Operations{
 		         }
 			 
 			 chk=0;
-			 if(data.get(28).length() != 0){
+			 if(data.get(28).length() != 0 && data.get(28).equals("Yes")){
 				 chk=((Flows)accesor).clickbutton("bie.includeautocheckbox"); 
 			 }
 			 
@@ -719,6 +722,28 @@ public class Flows extends Operations{
 		         else{
 		       	System.out.println("Auto checkbox  not selected");
 		         }
+			 
+			 
+			 chk=0;
+			 chk=((Flows)accesor).dropdownbyval("bie.applicantownsbusinessautodropdown", data.get(29)); 
+			 if(chk == 1) {
+		           	System.out.println("Applicant own business drop down selected");
+		          }      
+		         else{
+		       	System.out.println("Applicant own business drop down not selected");
+		         }
+			 
+			 chk=0;
+			 chk=((Flows)accesor).dropdownbyval("bie.blanketcoveragedropdown", data.get(30)); 
+			 if(chk == 1) {
+		           	System.out.println("Blanket coverage drop down selected");
+		          }      
+		         else{
+		       	System.out.println("Blanket coverage drop down not selected");
+		         }
+			 
+			 
+			 
 			 
 			 
 			 String nextfun = activerow.getCell(activerow.getLastCellNum()-1).toString();

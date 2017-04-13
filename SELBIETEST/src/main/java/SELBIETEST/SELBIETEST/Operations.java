@@ -111,20 +111,20 @@ import org.openqa.selenium.support.ui.Select;
 		switch (idtype){
 		case "id" :
 			
-			IEDriver.findElement(By.id(id)).sendKeys(val);
+			IEDriver.findElement(By.id(id)).sendKeys(val + Keys.TAB);
 			break;
 			
 		case "name"	:
 			
-			IEDriver.findElement(By.name(id)).sendKeys(val);
+			IEDriver.findElement(By.name(id)).sendKeys(val + Keys.TAB);
 			break;
 		case "xpath"	:
 			
-			IEDriver.findElement(By.xpath(id)).sendKeys(val);
+			IEDriver.findElement(By.xpath(id)).sendKeys(val + Keys.TAB);
 			break;
 		case "cssselector"	:
 			
-			IEDriver.findElement(By.cssSelector(id)).sendKeys(val);
+			IEDriver.findElement(By.cssSelector(id)).sendKeys(val + Keys.TAB);
 			break;
 		default:
 			System.out.println("Invalid idtype");
@@ -286,27 +286,52 @@ import org.openqa.selenium.support.ui.Select;
 		switch(idtype){
 		
 		case "id":
-			IEDriver.findElement(By.id(id)).sendKeys("");
-			IEDriver.findElement(By.id(id)).click();
+		
+				IEDriver.findElement(By.id(id)).sendKeys("");
+				if(buttonloc.contains("checkbox")){
+				IEDriver.findElement(By.id(id)).sendKeys(Keys.SPACE);
+				}else{
+					IEDriver.findElement(By.id(id)).click();
+				}
+			
 			return 1;
 	
 		
 		case "name":
+			
 			IEDriver.findElement(By.name(id)).sendKeys("");
-			IEDriver.findElement(By.name(id)).click();
+			if(buttonloc.contains("checkbox")){
+				IEDriver.findElement(By.name(id)).sendKeys(Keys.SPACE);
+			}else{
+				IEDriver.findElement(By.name(id)).click();
+			}	
+						
+			
 		
 			return 1;
 		
 			
 		case "xpath":
-			IEDriver.findElement(By.xpath(id)).sendKeys("");
-			IEDriver.findElement(By.xpath(id)).sendKeys(Keys.ENTER);
+		
+				IEDriver.findElement(By.xpath(id)).sendKeys("");
+				if(buttonloc.contains("checkbox")){
+					IEDriver.findElement(By.xpath(id)).sendKeys(Keys.SPACE);
+				}else{
+				IEDriver.findElement(By.xpath(id)).click();
+				}
+			
 			
 			return 1;
 			
 		case "cssSelector":
-			IEDriver.findElement(By.cssSelector(id)).sendKeys("");
-			IEDriver.findElement(By.cssSelector(id)).click();
+
+				IEDriver.findElement(By.cssSelector(id)).sendKeys("");
+				if(buttonloc.contains("checkbox")){
+					IEDriver.findElement(By.cssSelector(id)).sendKeys(Keys.SPACE);
+				}else{
+				IEDriver.findElement(By.cssSelector(id)).click();
+				}
+		
 			return 1;
 				
 		default:
