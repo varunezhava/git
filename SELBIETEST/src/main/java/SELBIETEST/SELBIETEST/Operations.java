@@ -371,6 +371,15 @@ import org.openqa.selenium.support.ui.Select;
 		
 	}
 	
+	public int CloseWindow() throws InterruptedException{
+		
+		  Thread.sleep(4500);
+			        	 
+	           IEDriver.close();
+	         return 1;
+		
+	}
+	
 	public int dropdownbyval(String droploc, String val)
 	{
 		

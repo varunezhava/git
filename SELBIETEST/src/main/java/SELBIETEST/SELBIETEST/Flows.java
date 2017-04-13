@@ -712,7 +712,7 @@ public class Flows extends Operations{
 		         }
 			 
 			 chk=0;
-			 if(data.get(28).length() != 0 && data.get(28).equals("Yes")){
+			 if(data.get(28).length() != 0 && data.get(28).equals("Y")){
 				 chk=((Flows)accesor).clickbutton("bie.includeautocheckbox"); 
 			 }
 			 
@@ -722,10 +722,23 @@ public class Flows extends Operations{
 		         else{
 		       	System.out.println("Auto checkbox  not selected");
 		         }
+			 ((Flows)accesor).WaitForJS();
+			 chk=0;
+			 if(data.get(29).length() != 0 && data.get(28).equals("Y")){
+				 chk=((Flows)accesor).autopopulator("bie.numberofautoadditonalinterest", new BigDecimal (data.get(29)).stripTrailingZeros().toPlainString());
+			 }
+			 
+			 if(chk == 1) {
+		           	System.out.println("Number of additional auto entered");
+		          }      
+		         else{
+		       	System.out.println("Number of additional auto not entered");
+		         }
 			 
 			 
 			 chk=0;
-			 chk=((Flows)accesor).dropdownbyval("bie.applicantownsbusinessautodropdown", data.get(29)); 
+			 if(data.get(30).length() != 0 && (data.get(28).equals("N") || data.get(28).equals(""))){
+			 chk=((Flows)accesor).dropdownbyval("bie.applicantownsbusinessautodropdown", data.get(30)); }
 			 if(chk == 1) {
 		           	System.out.println("Applicant own business drop down selected");
 		          }      
@@ -742,17 +755,35 @@ public class Flows extends Operations{
 		       	System.out.println("Blanket coverage drop down not selected");
 		         }
 			 
+			 chk=0;
+			 chk=((Flows)accesor).autopopulator("bie.detaileddescription", data.get(31));
+			 if(chk == 1) {
+		           	System.out.println("Detailed Description entered");
+		          }      
+		         else{
+		       	System.out.println("Detailed Description entered");
+		         }
 			 
-			 
-			 
-			 
+			 chk=((Flows)accesor).clickbutton("bie.footernextbutton");
+		      	 
+			 			 
 			 String nextfun = activerow.getCell(activerow.getLastCellNum()-1).toString();
+			 
+				
+			 
 	         return nextfun; 
 			 
 	 }
 	 
 	 
-	 
+	 public String exit(XSSFRow sudorow) throws InterruptedException{
+		 Operations accesor = new Flows();
+		 int chk =0;
+		 chk=((Flows)accesor).CloseWindow();
+		 chk=((Flows)accesor).SwitchToOldWindow();
+		 return "transcontrolnew";
+	 }
+	  
 	 
 	 
 	
